@@ -20,3 +20,10 @@ end
 package 'mongodb-org' do
   action [:upgrade]
 end
+
+service 'mongod' do
+  action [:enable, :start]
+end
+template '/etc/mongod.conf/mongod.conf' do
+  source 'mongo.service.erb'
+end

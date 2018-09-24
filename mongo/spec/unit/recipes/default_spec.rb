@@ -27,4 +27,4 @@ describe 'mongo::default' do
     end
   end
 end
-# We say what we expect from the envrionnment, 
+# We say what we expect from the envrionnment,
