@@ -9,9 +9,9 @@
 # MongoDB is running
 # MongoDB is enabled
 
-describe service("mongodb") do
-  it { should be_running }
-  it { should be_enabled }
+describe service("mongod") do
+  it {should be_running}
+  it {should be_enabled}
 end
 
 describe package 'mongodb-org' do
@@ -21,7 +21,7 @@ end
 #it is basically the provision.sh file
 #
 # MongoDB is listening on 27017 by default
-describe port(27017) do
+describe port("0.0.0.0", 27017) do
   it { should be_listening }
 end
 # MongoDB is listening on 0.0.0.0 by default

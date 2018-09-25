@@ -25,6 +25,23 @@ describe 'mongo::default' do
     it 'should install mongod' do
      expect(chef_run).to upgrade_package 'mongodb-org'
     end
+    # Add new ChefSpec tests for the following:
+    # Create a mongod.conf file in /etc/mongod.conf
+    it "should create a mongod.conf template in /etc/mongod.conf" do
+     expect(chef_run).to create_template("/etc/mongod.conf")
+   end
+   # Create a mongod.service file in /lib/systemd/system/mongod.service
+   it "should create a mongod.service template in /lib/systemd/system/mongod.service" do
+     expect(chef_run).to create_template("/lib/systemd/system/mongod.service")
+   end
+    # MongoDB service should be enabled
+    it "should be enabled" do
+      expect(chef_run).to enable_service('mongod')
+    end
+    # MongoDB service should be started
+    it "should be started" do
+      expect(chef_run).to start_service('mongod')
+    end
   end
 end
 # We say what we expect from the envrionnment,
